@@ -7,7 +7,7 @@ def main():
     import PySimpleGUI as sg
     from colour import Color
 
-    sg.theme('DarkPurple6')
+    sg.theme('LightBrown11')
 
     miles_travelled= 0
     thirst= 0
@@ -23,21 +23,21 @@ def main():
 
     layout = [
 
-        [sg.Text('Welcome To My Camel Game!!!', size=(60, 1), font=("Times New Roman", 15), text_color=r)],
-        [sg.Text("You have stolen a camel to make your way across the great Mobi desert.")],
-        [sg.Text("The natives want their camel back and are chasing you down!")],
-        [sg.Text("Survive your desert trek and out run the natives.")],
+        [sg.Text('Welcome To My Camel Game!!!', size=(60, 1), justification='centre', font=("Times New Roman", 25), text_color=r)],
+        [sg.Text("You have stolen a camel to make your way across the great Mobi desert.", size=(60, 1), justification='centre', font=('Helvetica', 12), text_color=r)],
+        [sg.Text("The natives want their camel back and are chasing you down!", size=(60, 1), justification='centre', font=('Helvetica', 12), text_color=r)],
+        [sg.Text("Survive your desert trek and out run the natives.", size=(60, 1), justification='centre', font=('Helvetica', 12), text_color=r)],
 
-        [sg.Text("Status:"), sg.Text(key="_OUT_")],
-        [sg.Text("Risk:"), sg.Text(key="_OUT2_")],
-        [sg.Text("Game Status:"), sg.Text(key="_OUT3_")],
+        [sg.Text("Status:", font=("Arial Black", 15)), sg.Text(key="_OUT_")],
+        [sg.Text("Risk:", font=("Arial Black", 15)), sg.Text(key="_OUT2_")],
+        [sg.Text("Game Status:", font=("Arial Black", 15)), sg.Text(key="_OUT3_")],
 
         [sg.Text("        ")],
-        [sg.Button("A: Drink from your canteen.", disabled= False)],
-        [sg.Button("B: Ahead moderate speed.", disabled= False)],
-        [sg.Button("C: Ahead full speed.", disabled= False)],
-        [sg.Button("D: Stop for the night.", disabled= False)],
-        [sg.Button("E: Status check.", disabled= False)],
+        [sg.Button("A: Drink from your canteen.", font=("Times New Roman", 15), disabled= False)],
+        [sg.Button("B: Ahead moderate speed.", font=("Times New Roman", 15), disabled= False)],
+        [sg.Button("C: Ahead full speed.", font=("Times New Roman", 15), disabled= False)],
+        [sg.Button("D: Stop for the night.", font=("Times New Roman", 15), disabled= False)],
+        [sg.Button("E: Status check.", font=("Times New Roman", 15), disabled= False)],
         [sg.Text("        ")],
         [sg.Button("Q: Quit"), sg.Button("P: Play Again")],
 
@@ -110,6 +110,10 @@ def main():
             # done= True
             window["_OUT2_"].update('')
             window["_OUT_"].update('')
+            window.FindElement("A: Drink from your canteen.").Update(disabled=True)
+            window.FindElement("B: Ahead moderate speed.").Update(disabled=True)
+            window.FindElement("C: Ahead full speed.").Update(disabled=True)
+            window.FindElement("D: Stop for the night.").Update(disabled=True) 
             window.FindElement("E: Status check.").Update(disabled=True)
 
         elif distance_natives>=miles_travelled:
@@ -118,6 +122,11 @@ def main():
             alive= False
             window["_OUT2_"].update('')
             window["_OUT_"].update('')
+            window.FindElement("A: Drink from your canteen.").Update(disabled=True)
+            window.FindElement("B: Ahead moderate speed.").Update(disabled=True)
+            window.FindElement("C: Ahead full speed.").Update(disabled=True)
+            window.FindElement("D: Stop for the night.").Update(disabled=True) 
+            window.FindElement("E: Status check.").Update(disabled=True)
 
         elif (miles_travelled-distance_natives) < 15:
             window["_OUT2_"].update('The natives are getting close')
@@ -135,7 +144,7 @@ def main():
 
 
         oasis= random.randrange(1,21)
-        if oasis == 1:
+        if oasis == 1 and win== False and miles_travelled>0:
             window["_OUT_"].update('You have found the oasis\n You are very refreshed')
             thirst= 0
             camel_tiredness= 0
