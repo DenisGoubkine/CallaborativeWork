@@ -1,4 +1,4 @@
-def main(): 
+def main():
 
     from calendar import TUESDAY
     import random
@@ -131,24 +131,28 @@ def main():
         elif (miles_travelled-distance_natives) < 15:
             window["_OUT2_"].update('The natives are getting close')
         
-        elif miles_travelled >= 200 and alive== True: 
+        if miles_travelled >= 200 and alive== True: 
             window["_OUT3_"].update('You have crossed the dessert, you win')
             window["_OUT2_"].update('')
             window["_OUT_"].update('')
-            win= True
             window.FindElement("A: Drink from your canteen.").Update(disabled=True)
             window.FindElement("B: Ahead moderate speed.").Update(disabled=True)
             window.FindElement("C: Ahead full speed.").Update(disabled=True)
             window.FindElement("D: Stop for the night.").Update(disabled=True) 
             window.FindElement("E: Status check.").Update(disabled=True)
 
+        if random.randrange(1,21) == 1 and miles_travelled > 0 and win not True:
+            window["_OUT_"].update("You have found the oasis\n You are very refreshed")
+            thirst = 0
+            camel_tiredness = 0
+            drinks = 10
 
-        oasis= random.randrange(1,21)
-        if oasis == 1 and win== False and miles_travelled>0:
-            window["_OUT_"].update('You have found the oasis\n You are very refreshed')
-            thirst= 0
-            camel_tiredness= 0
-            drinks= 10
+        # oasis= random.randrange(1,21)
+        # if oasis == 1 and win== False and miles_travelled>0:
+        #     window["_OUT_"].update('You have found the oasis\n You are very refreshed')
+        #     thirst= 0
+        #     camel_tiredness= 0
+        #     drinks= 10
 
     window.close()
 
