@@ -40,7 +40,7 @@ def main():
         [sg.Button("Q: Quit"), sg.Button("P: Play Again")],
     ]
 
-    window = sg.Window("Start", layout, size=(450, 550))
+    window = sg.Window("Start", layout, size=(620, 650))
 
     done = False
     while not done:
