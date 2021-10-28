@@ -141,7 +141,7 @@ def main():
             window.FindElement("D: Stop for the night.").Update(disabled=True) 
             window.FindElement("E: Status check.").Update(disabled=True)
 
-        if random.randrange(1,21) == 1 and miles_travelled > 0 and win not True:
+        if random.randrange(1,21) == 1 and miles_travelled > 0 and win== False:
             window["_OUT_"].update("You have found the oasis\n You are very refreshed")
             thirst = 0
             camel_tiredness = 0
