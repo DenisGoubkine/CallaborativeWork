@@ -13,10 +13,10 @@ def main():
     camel_tiredness = 0
     distance_natives = -15
     drinks = 3
+    alive = True
+    win = False
 
     # DEF STATMENTS
-    BLUE = Color("blue")
-    YELLOW = Color("yellow")
     RED = Color("red")
 
     layout = [
@@ -83,9 +83,6 @@ def main():
 
         elif event == "E: Status check.":
             window["_OUT_"].update(f'\n\nMiles traveled:{miles_travelled} \nDrinks in canteen:{drinks} \nThe natives are {distance_natives} miles behind you. ')
-
-        alive = True
-        win = False
 
         if thirst > 4 and thirst <= 6:
             window["_OUT2_"].update('You are thirsty.')
